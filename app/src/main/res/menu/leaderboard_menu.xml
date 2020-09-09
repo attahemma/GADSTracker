@@ -5,5 +5,7 @@
 
     <item
         android:title="Submit"
-        app:showAsAction="always|withText" />
+        app:showAsAction="always"
+        android:icon="@drawable/submit_app"
+        />
 </menu>
