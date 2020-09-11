@@ -4,9 +4,8 @@
     >
 
     <item
-        android:title="@string/submit_action_button"
-        app:showAsAction="always"
-        android:icon="@drawable/submit_app"
         android:id="@+id/submit_menu"
-        />
+        android:icon="@drawable/ic_baseline_send_24"
+        android:title="@string/submit_action_button"
+        app:showAsAction="ifRoom|withText" />
 </menu>
