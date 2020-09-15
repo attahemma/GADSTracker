@@ -12,6 +12,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.android.material.tabs.TabLayout;
 import com.pyropy.gadstracker.Adapters.ViewPagerAdapter;
@@ -25,6 +27,7 @@ public class LeaderBoard extends AppCompatActivity {
     private ViewPager mViewPager;
     private ViewPagerAdapter mViewPagerAdapter;
     private Toolbar mMyToolbar;
+    private Button mButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,26 +68,20 @@ public class LeaderBoard extends AppCompatActivity {
         setSupportActionBar(mMyToolbar);
         mTabLayout = findViewById(R.id.tablayout);
         mViewPager = findViewById(R.id.viewpager);
+        mButton = findViewById(R.id.btn_submit);
+
+        mButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                lauchSubmitPage();
+            }
+        });
 
         mViewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         Log.d(TAG,"Components Initialized and ViewPagerAdapter Created.");
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.leaderboard_menu,menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.submit_menu:
-                Intent intent = new Intent(this,SubmissionActivity.class);
-                startActivity(intent);
-                return true;
-            default:
-                return true;
-        }
+    private void lauchSubmitPage(){
+        Intent intent = new Intent(this,SubmissionActivity.class);
+        startActivity(intent);
     }
 }

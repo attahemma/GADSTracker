@@ -1,21 +1,25 @@
 package com.pyropy.gadstracker;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toolbar;
+
 
 public class SubmissionActivity extends AppCompatActivity {
 
     private Button submitBtn;
     private EditText firstName, lastName, email, link;
+    private Toolbar mToolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +30,16 @@ public class SubmissionActivity extends AppCompatActivity {
         lastName = (EditText) findViewById(R.id.lastname);
         email = (EditText) findViewById(R.id.email);
         link = (EditText) findViewById(R.id.github);
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
+
+        ActionBar uActionBar = getSupportActionBar();
+        uActionBar.setHomeAsUpIndicator(R.drawable.back_btn);
+        try {
+            uActionBar.setDisplayHomeAsUpEnabled(true);
+        }catch (NullPointerException npe){
+            Log.d("AppBar", "No AppBar has been set");
+        }
 
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override

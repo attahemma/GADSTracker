@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".SubmissionActivity"
-            android:parentActivityName=".LeaderBoard">
+            android:parentActivityName="com.pyropy.gadstracker.LeaderBoard">
 
         </activity>
         <activity android:name=".LeaderBoard" />
